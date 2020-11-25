@@ -2,11 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import sys
-sys.path.append("./")
+sys.path.append('./')
 import ownersleague_cards_list
 import time
 
-r = requests.get("http://npb.jp/bis/teams/rst_b.html")
+r = requests.get('http://npb.jp/bis/teams/rst_b.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_b = soup.find_all(href=re.compile('/bis/players/'))
 players_b_formatted = []
@@ -21,7 +21,7 @@ for player in players_b_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_b) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_l.html")
+r = requests.get('http://npb.jp/bis/teams/rst_l.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_l = soup.find_all(href=re.compile('/bis/players/'))
 players_l_formatted = []
@@ -36,7 +36,7 @@ for player in players_l_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_l) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_m.html")
+r = requests.get('http://npb.jp/bis/teams/rst_m.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_m = soup.find_all(href=re.compile('/bis/players/'))
 players_m_formatted = []
@@ -51,7 +51,7 @@ for player in players_m_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_m) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_d.html")
+r = requests.get('http://npb.jp/bis/teams/rst_d.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_d = soup.find_all(href=re.compile('/bis/players/'))
 players_d_formatted = []
@@ -66,7 +66,7 @@ for player in players_d_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_d) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_s.html")
+r = requests.get('http://npb.jp/bis/teams/rst_s.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_s = soup.find_all(href=re.compile('/bis/players/'))
 players_s_formatted = []
@@ -81,7 +81,7 @@ for player in players_s_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_s) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_e.html")
+r = requests.get('http://npb.jp/bis/teams/rst_e.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_e = soup.find_all(href=re.compile('/bis/players/'))
 players_e_formatted = []
@@ -96,7 +96,7 @@ for player in players_e_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_e) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_t.html")
+r = requests.get('http://npb.jp/bis/teams/rst_t.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_t = soup.find_all(href=re.compile('/bis/players/'))
 players_t_formatted = []
@@ -111,7 +111,7 @@ for player in players_t_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_t) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_c.html")
+r = requests.get('http://npb.jp/bis/teams/rst_c.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_c = soup.find_all(href=re.compile('/bis/players/'))
 players_c_formatted = []
@@ -126,7 +126,7 @@ for player in players_c_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_c) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_h.html")
+r = requests.get('http://npb.jp/bis/teams/rst_h.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_h = soup.find_all(href=re.compile('/bis/players/'))
 players_h_formatted = []
@@ -141,7 +141,7 @@ for player in players_h_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_h) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_f.html")
+r = requests.get('http://npb.jp/bis/teams/rst_f.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_f = soup.find_all(href=re.compile('/bis/players/'))
 players_f_formatted = []
@@ -156,7 +156,7 @@ for player in players_f_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_f) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_db.html")
+r = requests.get('http://npb.jp/bis/teams/rst_db.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_db = soup.find_all(href=re.compile('/bis/players/'))
 players_db_formatted = []
@@ -171,7 +171,7 @@ for player in players_db_formatted:
 print('オーナーズリーグに収録された現役選手：' + str(count_db) + '人\n')
 time.sleep(1)
 
-r = requests.get("http://npb.jp/bis/teams/rst_g.html")
+r = requests.get('http://npb.jp/bis/teams/rst_g.html')
 soup = BeautifulSoup(r.content, 'html.parser')
 players_g = soup.find_all(href=re.compile('/bis/players/'))
 players_g_formatted = []
@@ -187,19 +187,22 @@ print('オーナーズリーグに収録された現役選手：' + str(count_g)
 time.sleep(1)
 
 count_npb = count_b + count_l + count_m + count_d + count_s + count_e + count_t + count_c + count_h + count_f + count_db + count_g
-print('オーナーズリーグに収録された全チームの現役選手：' + str(count_npb) + '人\n')
+print('オーナーズリーグに収録された現役選手の合計：' + str(count_npb) + '人\n')
 
-players_npb = players_b_formatted + players_l_formatted + players_m_formatted + players_d_formatted# + players_s_formatted + players_e_formatted + players_t_formatted + players_c_formatted + players_h_formatted + players_f_formatted + players_db_formatted + players_g_formatted
+players_npb = players_b_formatted + players_l_formatted + players_m_formatted + players_d_formatted + players_s_formatted + players_e_formatted + players_t_formatted + players_c_formatted + players_h_formatted + players_f_formatted + players_db_formatted + players_g_formatted
 
+count_all = 0
 def players_vol(name, cards):
-    count = 0
+    count_vol = 0
     print(name)
     for name in cards:
         if name in players_npb:
             print(name)
-            count += 1
-    print('収録された選手のうち現役選手：' + str(count) + '人\n')
-    if count > 0:
+            global count_all
+            count_all += 1
+            count_vol += 1
+    print('現役選手のカード：' + str(count_vol) + '種類\n')
+    if count_vol > 0:
         time.sleep(1)
 
 players_vol('OL01', ownersleague_cards_list.OL01)
@@ -227,12 +230,12 @@ players_vol('OL22', ownersleague_cards_list.OL22)
 players_vol('OL23', ownersleague_cards_list.OL23)
 players_vol('OL24', ownersleague_cards_list.OL24)
 
-"""
+'''
 OB選手のみが収録されているため実行しない
 players_vol('OLM01', ownersleague_cards_list.OLM01)
 players_vol('OLM02', ownersleague_cards_list.OLM02)
 players_vol('OLM03', ownersleague_cards_list.OLM03)
-"""
+'''
 
 players_vol('OLS01', ownersleague_cards_list.OLS01)
 
@@ -285,5 +288,7 @@ players_vol('OLE01', ownersleague_cards_list.OLE01)
 players_vol('OLE02', ownersleague_cards_list.OLE02)
 players_vol('OLE03', ownersleague_cards_list.OLE03)
 players_vol('OLE04', ownersleague_cards_list.OLE04)
+
+print('現役選手のカードの合計：' + str(count_all) + '種類\n')
 
 print('同じ登録名の別の選手が含まれることがあります。\nまた使用しているリストの誤字等により表示される情報が正確でない場合があります。')
