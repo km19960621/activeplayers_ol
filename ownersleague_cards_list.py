@@ -4767,3 +4767,7 @@ OLB = OLB01 + OLB02 + OLB03 + OLB04 + OLB05 + OLB06 + OLB07 + OLB08 + OLB09 + OL
 OLE = OLE01 + OLE02 + OLE03 + OLE04
 
 cardlist = OL + OLM + OLS + OLP + OLB + OLE
+
+import collections
+collections_cardlist = collections.Counter(cardlist)
+print(collections_cardlist)
