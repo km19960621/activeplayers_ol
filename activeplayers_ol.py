@@ -6,201 +6,51 @@ sys.path.append('./')
 import ownersleague_cards_list
 import time
 
-r = requests.get('http://npb.jp/bis/teams/rst_b.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_b = soup.find_all(href=re.compile('/bis/players/'))
-players_b_formatted = []
-for player in players_b:
-    players_b_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('オリックス・バファローズ')
-count_b = 0
-for player in players_b_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_b += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_b) + '人\n')
-time.sleep(1)
+players_npb = []
+count_team_all = 0
 
-r = requests.get('http://npb.jp/bis/teams/rst_l.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_l = soup.find_all(href=re.compile('/bis/players/'))
-players_l_formatted = []
-for player in players_l:
-    players_l_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('埼玉西武ライオンズ')
-count_l = 0
-for player in players_l_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_l += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_l) + '人\n')
-time.sleep(1)
+def players_team(link, team_name):
+    r = requests.get(link)
+    soup = BeautifulSoup(r.content, 'html.parser')
+    players = soup.find_all(href=re.compile('/bis/players/'))
+    count_team = 0
+    print(team_name)
+    for player in players:
+        player_modified = ((player.getText()).replace('　', '').replace('個人年度別成績', ''))
+        players_npb.append(player_modified)
+        if player_modified in ownersleague_cards_list.cardlist:
+            print(player_modified)
+            count_team += 1
+            global count_team_all
+            count_team_all += 1
+    print('オーナーズリーグに収録された現役選手：' + str(count_team) + '人\n')
+    time.sleep(1)
 
-r = requests.get('http://npb.jp/bis/teams/rst_m.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_m = soup.find_all(href=re.compile('/bis/players/'))
-players_m_formatted = []
-for player in players_m:
-    players_m_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('千葉ロッテマリーンズ')
-count_m = 0
-for player in players_m_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_m += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_m) + '人\n')
-time.sleep(1)
+players_team('http://npb.jp/bis/teams/rst_b.html', 'オリックス・バファローズ')
+players_team('http://npb.jp/bis/teams/rst_l.html', '埼玉西武ライオンズ')
+players_team('http://npb.jp/bis/teams/rst_m.html', '千葉ロッテマリーンズ')
+players_team('http://npb.jp/bis/teams/rst_d.html', '中日ドラゴンズ')
+players_team('http://npb.jp/bis/teams/rst_s.html', '東京ヤクルトスワローズ')
+players_team('http://npb.jp/bis/teams/rst_e.html', '東北楽天ゴールデンイーグルス')
+players_team('http://npb.jp/bis/teams/rst_t.html', '阪神タイガース')
+players_team('http://npb.jp/bis/teams/rst_c.html', '広島東洋カープ')
+players_team('http://npb.jp/bis/teams/rst_h.html', '福岡ソフトバンクホークス')
+players_team('http://npb.jp/bis/teams/rst_f.html', '北海道日本ハムファイターズ')
+players_team('http://npb.jp/bis/teams/rst_db.html', '横浜DeNAベイスターズ')
+players_team('http://npb.jp/bis/teams/rst_g.html', '読売ジャイアンツ')
 
-r = requests.get('http://npb.jp/bis/teams/rst_d.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_d = soup.find_all(href=re.compile('/bis/players/'))
-players_d_formatted = []
-for player in players_d:
-    players_d_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('中日ドラゴンズ')
-count_d = 0
-for player in players_d_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_d += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_d) + '人\n')
-time.sleep(1)
+print('オーナーズリーグに収録された現役選手の合計：' + str(count_team_all) + '人\n')
 
-r = requests.get('http://npb.jp/bis/teams/rst_s.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_s = soup.find_all(href=re.compile('/bis/players/'))
-players_s_formatted = []
-for player in players_s:
-    players_s_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('東京ヤクルトスワローズ')
-count_s = 0
-for player in players_s_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_s += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_s) + '人\n')
-time.sleep(1)
-
-r = requests.get('http://npb.jp/bis/teams/rst_e.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_e = soup.find_all(href=re.compile('/bis/players/'))
-players_e_formatted = []
-for player in players_e:
-    players_e_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('東北楽天ゴールデンイーグルス')
-count_e = 0
-for player in players_e_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_e += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_e) + '人\n')
-time.sleep(1)
-
-r = requests.get('http://npb.jp/bis/teams/rst_t.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_t = soup.find_all(href=re.compile('/bis/players/'))
-players_t_formatted = []
-for player in players_t:
-    players_t_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('阪神タイガース')
-count_t = 0
-for player in players_t_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_t += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_t) + '人\n')
-time.sleep(1)
-
-r = requests.get('http://npb.jp/bis/teams/rst_c.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_c = soup.find_all(href=re.compile('/bis/players/'))
-players_c_formatted = []
-for player in players_c:
-    players_c_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('広島東洋カープ')
-count_c = 0
-for player in players_c_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_c += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_c) + '人\n')
-time.sleep(1)
-
-r = requests.get('http://npb.jp/bis/teams/rst_h.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_h = soup.find_all(href=re.compile('/bis/players/'))
-players_h_formatted = []
-for player in players_h:
-    players_h_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('福岡ソフトバンクホークス')
-count_h = 0
-for player in players_h_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_h += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_h) + '人\n')
-time.sleep(1)
-
-r = requests.get('http://npb.jp/bis/teams/rst_f.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_f = soup.find_all(href=re.compile('/bis/players/'))
-players_f_formatted = []
-for player in players_f:
-    players_f_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('北海道日本ハムファイターズ')
-count_f = 0
-for player in players_f_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_f += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_f) + '人\n')
-time.sleep(1)
-
-r = requests.get('http://npb.jp/bis/teams/rst_db.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_db = soup.find_all(href=re.compile('/bis/players/'))
-players_db_formatted = []
-for player in players_db:
-    players_db_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('横浜DeNAベイスターズ')
-count_db = 0
-for player in players_db_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_db += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_db) + '人\n')
-time.sleep(1)
-
-r = requests.get('http://npb.jp/bis/teams/rst_g.html')
-soup = BeautifulSoup(r.content, 'html.parser')
-players_g = soup.find_all(href=re.compile('/bis/players/'))
-players_g_formatted = []
-for player in players_g:
-    players_g_formatted.append((player.getText()).replace('　', '').replace('個人年度別成績', ''))
-print('読売ジャイアンツ')
-count_g = 0
-for player in players_g_formatted:
-    if player in ownersleague_cards_list.cardlist:
-        print(player)
-        count_g += 1
-print('オーナーズリーグに収録された現役選手：' + str(count_g) + '人\n')
-time.sleep(1)
-
-count_npb = count_b + count_l + count_m + count_d + count_s + count_e + count_t + count_c + count_h + count_f + count_db + count_g
-print('オーナーズリーグに収録された現役選手の合計：' + str(count_npb) + '人\n')
-
-players_npb = players_b_formatted + players_l_formatted + players_m_formatted + players_d_formatted + players_s_formatted + players_e_formatted + players_t_formatted + players_c_formatted + players_h_formatted + players_f_formatted + players_db_formatted + players_g_formatted
-
-count_all = 0
+count_vol_all = 0
 def players_vol(name, cards):
     count_vol = 0
     print(name)
     for name in cards:
         if name in players_npb:
             print(name)
-            global count_all
-            count_all += 1
             count_vol += 1
+            global count_vol_all
+            count_vol_all += 1
     print('現役選手のカード：' + str(count_vol) + '種類\n')
     if count_vol > 0:
         time.sleep(1)
@@ -289,6 +139,6 @@ players_vol('OLE02', ownersleague_cards_list.OLE02)
 players_vol('OLE03', ownersleague_cards_list.OLE03)
 players_vol('OLE04', ownersleague_cards_list.OLE04)
 
-print('現役選手のカードの合計：' + str(count_all) + '種類\n')
+print('現役選手のカードの合計：' + str(count_vol_all) + '種類\n')
 
 print('同じ登録名の別の選手が含まれることがあります。\nまた使用しているリストの誤字等により表示される情報が正確でない場合があります。')
