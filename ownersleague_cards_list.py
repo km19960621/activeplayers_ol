@@ -4770,5 +4770,6 @@ cardlist = OL + OLM + OLS + OLP + OLB + OLE
 
 import collections
 collections_cardlist = collections.Counter(cardlist)
-print(collections_cardlist)
-print('\n')
+c = collections_cardlist.most_common()
+for name, count in c:
+    print(name, count)
