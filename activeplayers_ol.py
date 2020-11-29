@@ -6,6 +6,9 @@ sys.path.append('./')
 import ownersleague_cards_list
 import time
 
+print('\n')
+time.sleep(1)
+
 players_npb = []
 count_team_all = 0
 
